@@ -18,13 +18,15 @@ namespace Users.Api
 
         public IConfiguration Configuration { get; }
 
-        public void ConfigureServices(IServiceCollection services)
+         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<UserContext>(options => options.UseInMemoryDatabase("UserDatabase")); services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddDbContext<UserContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("UserDatabase")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Users.Api", Version = "v1" });
-            });
+            });            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
