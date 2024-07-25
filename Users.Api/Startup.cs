@@ -26,7 +26,7 @@ namespace Users.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Users.Api", Version = "v1" });
-            });            
+            });           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
