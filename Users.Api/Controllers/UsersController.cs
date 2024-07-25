@@ -34,7 +34,7 @@ namespace UserApi.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetUser), new { id = user.Id }, user);
-        }
+        }             
 
         // GET: api/Users/{id}
         [HttpGet("{id}")]
