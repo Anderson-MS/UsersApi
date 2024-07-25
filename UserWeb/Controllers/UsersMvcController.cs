@@ -32,9 +32,11 @@ namespace UsersMvc.Controllers
         {
             var response = await _httpClient.PostAsJsonAsync("https://localhost:44390/api/Users", user);
             if (response.IsSuccessStatusCode)
-            {
+            {               
+                TempData["SuccessMessage"] = "Novo usuário criado com sucesso!";
                 return RedirectToAction(nameof(Index));
             }
+                       
             return View(user);
         }
 
@@ -59,6 +61,7 @@ namespace UsersMvc.Controllers
             var response = await _httpClient.PutAsJsonAsync($"https://localhost:44390/api/Users/{id}", user);
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Usuário editado com sucesso!";
                 return RedirectToAction(nameof(Index));
             }
             return View(user);
@@ -82,6 +85,7 @@ namespace UsersMvc.Controllers
             var response = await _httpClient.DeleteAsync($"https://localhost:44390/api/Users/{id}");
             if (response.IsSuccessStatusCode)
             {
+                TempData["SuccessMessage"] = "Usuário deletado com sucesso!";
                 return RedirectToAction(nameof(Index));
             }
             return View("Error"); 

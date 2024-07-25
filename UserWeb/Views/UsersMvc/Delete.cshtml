@@ -1,66 +1,84 @@
-﻿@*@model Users.Api.Models.User
+﻿@model Users.Api.Models.User
 
-<h2>Deletar Usuário</h2>
+@{
+    ViewData["Title"] = "Deletar Usuário";
+}
+
+<style>
+body {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .btn-danger {
+        background-color: #f44336;
+        border-color: #f44336;
+    }
+
+    .btn-secondary {
+        background-color: #555;
+        border-color: #555;
+    }
+
+    .btn-danger:hover,
+    .btn-secondary:hover {
+        opacity: 0.8;
+    }
+
+    .btn-group {
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-group .btn {
+        margin: 0 5px;
+    }
+
+    h2, h4 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        border-top: 1px solid #777;
+    }
+
+    .dl-horizontal dt {
+        color: #ddd;
+    }
+</style>
+
+<h2>@ViewData["Title"]</h2>
 
 <h4>Tem certeza que deseja deletar este usuário?</h4>
 <hr />
-<div>
-    <h4>Usuário</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-    
-    <form asp-action="DeleteConfirmed">
-        <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <input type="submit" value="Deletar" class="btn btn-danger" />
-            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-        </div>
-    </form>
-</div>
-*@
-
-@model Users.Api.Models.User
-
-<h2>Deletar Usuário</h2>
-
-<h4>Tem certeza que deseja deletar este usuário?</h4>
-<hr />
-<div>
-    <h4>Usuário</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete" method="post">
-        <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <input type="submit" value="Deletar" class="btn btn-danger" />
-            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
-        </div>
-    </form>
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h4 class="mb-3">Usuário</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+        </dl>
+        
+        <form asp-action="Delete" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <div class="btn-group">
+                    <input type="submit" value="Deletar" class="btn btn-danger" />
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

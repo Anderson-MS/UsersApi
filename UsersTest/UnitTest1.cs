@@ -53,25 +53,6 @@ namespace Users.Tests
         }
 
         [Test, Order(2)]
-        public async Task GetUsers()
-        {
-            // Arrange
-            var requestPath = "/api/Users";
-
-            // Act
-            var response = await _httpClient.GetAsync(requestPath);
-
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-            var users = await response.Content.ReadFromJsonAsync<User[]>();
-
-            // Assert
-            Assert.NotNull(users);
-
-            if (users != null)
-                Assert.GreaterOrEqual(users.Length, 1);
-        }
-
-        [Test, Order(3)]
         public async Task InsertUser()
         {
             // Arrange
@@ -93,6 +74,27 @@ namespace Users.Tests
 
             userToCreate.Should().BeEquivalentTo(usersResult, options => options.Excluding(u => u.Id));
         }
+
+        [Test, Order(3)]
+        public async Task GetUsers()
+        {
+            // Arrange
+            var requestPath = "/api/Users";
+
+            // Act
+            var response = await _httpClient.GetAsync(requestPath);
+
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+            var users = await response.Content.ReadFromJsonAsync<User[]>();
+
+            // Assert
+            Assert.NotNull(users);
+
+            if (users != null)
+                Assert.GreaterOrEqual(users.Length, 1);
+        }
+
+       
 
         [Test, Order(4)]
         public async Task UpdateUser()
