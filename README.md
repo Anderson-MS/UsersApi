@@ -13,10 +13,8 @@ Antes de começar, verifique se você tem os seguintes requisitos instalados:
 
 Clone o repositório do projeto e navegue até o diretório:
 
-```sh
-	git clone https://github.com/Anderson-MS/UsersApi.git
-	cd seu-repositorio
-
+git clone https://github.com/Anderson-MS/UsersApi.git
+	
 ## Configuração do Projeto
 
 ##Executar as Migrations
@@ -25,3 +23,4 @@ Para configurar o banco de dados, você deve estar dentro da pasta do projeto da
 
 dotnet ef migrations add InitialCreate
 dotnet ef database update
+
